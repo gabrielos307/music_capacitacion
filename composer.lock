@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bae3f640a631a993a49129d353eefbf9",
+    "content-hash": "9f7116919fd7306f1248c7b65476a32e",
     "packages": [
         {
             "name": "aura/intl",
@@ -321,6 +321,51 @@
             "time": "2020-10-29T04:00:42+00:00"
         },
         {
+            "name": "drmonkeyninja/cakephp-font-awesome",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/drmonkeyninja/cakephp-font-awesome.git",
+                "reference": "35d88f4f4231bda2bc4ed7c78eb77123811a0084"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/drmonkeyninja/cakephp-font-awesome/zipball/35d88f4f4231bda2bc4ed7c78eb77123811a0084",
+                "reference": "35d88f4f4231bda2bc4ed7c78eb77123811a0084",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/cakephp": "~3.0"
+            },
+            "type": "cakephp-plugin",
+            "autoload": {
+                "psr-4": {
+                    "FontAwesome\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andy Carter",
+                    "role": "Author"
+                }
+            ],
+            "description": "CakePHP helper for creating Font Awesome links",
+            "homepage": "https://github.com/drmonkeyninja/cakephp-font-awesome",
+            "keywords": [
+                "cakephp",
+                "helper"
+            ],
+            "support": {
+                "issues": "https://github.com/drmonkeyninja/cakephp-font-awesome/issues",
+                "source": "https://github.com/drmonkeyninja/cakephp-font-awesome/tree/master"
+            },
+            "time": "2017-02-17T10:44:42+00:00"
+        },
+        {
             "name": "mobiledetect/mobiledetectlib",
             "version": "2.8.37",
             "source": {
@@ -381,6 +426,44 @@
                 }
             ],
             "time": "2021-02-19T21:22:57+00:00"
+        },
+        {
+            "name": "patrickquijano/cakephp3-fontawesome",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/patrickquijano/cakephp3-fontawesome.git",
+                "reference": "0f74a6a74c7584557a3e78116657fb10054cf208"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/patrickquijano/cakephp3-fontawesome/zipball/0f74a6a74c7584557a3e78116657fb10054cf208",
+                "reference": "0f74a6a74c7584557a3e78116657fb10054cf208",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/cakephp": "^3.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7.14|^6.0"
+            },
+            "default-branch": true,
+            "type": "cakephp-plugin",
+            "autoload": {
+                "psr-4": {
+                    "FontAwesome\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "FontAwesome plugin for CakePHP 3",
+            "support": {
+                "issues": "https://github.com/patrickquijano/cakephp3-fontawesome/issues",
+                "source": "https://github.com/patrickquijano/cakephp3-fontawesome/tree/master"
+            },
+            "time": "2020-05-01T11:01:54+00:00"
         },
         {
             "name": "psr/container",
@@ -667,6 +750,64 @@
                 "source": "https://github.com/cakephp/phinx/tree/0.11.7"
             },
             "time": "2020-05-09T13:59:05+00:00"
+        },
+        {
+            "name": "simtecsystem/cakephp-adminlte-theme",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/simtecsystem/cakephp-adminlte-theme.git",
+                "reference": "4687b4008dc3b62ce6b9cce5752551fc7ad793b3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/simtecsystem/cakephp-adminlte-theme/zipball/4687b4008dc3b62ce6b9cce5752551fc7ad793b3",
+                "reference": "4687b4008dc3b62ce6b9cce5752551fc7ad793b3",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/cakephp": "~3.0",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.1"
+            },
+            "type": "cakephp-plugin",
+            "autoload": {
+                "psr-4": {
+                    "AdminLTE\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maicon Pinto",
+                    "email": "maiconsilva.pinto@gmail.com",
+                    "homepage": "https://www.maiconpinto.com.br/",
+                    "role": "Author"
+                },
+                {
+                    "name": "SimTEC-System",
+                    "email": "info@simtec-system.de",
+                    "homepage": "https://www.simtec-system.de/",
+                    "role": "Author (Fork)"
+                }
+            ],
+            "description": "CakePHP 3.x AdminLTE Theme 3.",
+            "homepage": "https://github.com/maiconpinto/cakephp-adminlte-theme",
+            "keywords": [
+                "cakephp",
+                "plugin",
+                "templates"
+            ],
+            "support": {
+                "issues": "https://github.com/simtecsystem/cakephp-adminlte-theme/issues",
+                "source": "https://github.com/simtecsystem/cakephp-adminlte-theme"
+            },
+            "time": "2020-02-17T11:40:12+00:00"
         },
         {
             "name": "symfony/config",
@@ -5356,6 +5497,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "patrickquijano/cakephp3-fontawesome": 20,
         "psy/psysh": 0
     },
     "prefer-stable": true,
