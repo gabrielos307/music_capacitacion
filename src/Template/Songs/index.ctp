@@ -49,5 +49,10 @@
     <?php endforeach; ?>
 </table>
 </div>
+<script>
+    $(function(){
+        console.log('JQUERY');
+    });
+</script>
 
 <!---<?//= //$this->Fa->link('facebook', __('Proceed'), ['controller' => 'pages', 'display', 'next']) ?>-->

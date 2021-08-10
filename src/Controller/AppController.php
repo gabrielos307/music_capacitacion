@@ -45,6 +45,8 @@ class AppController extends Controller
             'enableBeforeRedirect' => false,
         ]);
         $this->loadComponent('Flash');
+        //$this->loadComponent('Security');
+        //$this->loadComponent('Csrf');
 
         /*
          * Enable the following component for recommended CakePHP security settings.
