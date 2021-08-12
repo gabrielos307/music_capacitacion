@@ -5,10 +5,7 @@
 <?php echo $this->element('modal', ["accion" => "Editar", "idmodal"=>"editmodal", "idform"=>"editform"]);?>
 
 <h1>Artistas</h1>
-<?php echo $this->Html->link(
-    'Añadir artista',
-    '#',
-    ['class' => 'button', 'id'=>'add-artista']);?>
+<button class="btn btn-primary mr-2 mb-2 mt-2 task-add">Agregar</button>
 <table>
     <tr>
         <th>Id</th>
@@ -38,24 +35,8 @@
             <td>
             <button class="btn btn-danger mr-2 mb-2 mt-2 task-delete">
                 Delete
-            <?php /*$this->Form
-                ->postLink('', 
-                ['controller'=> 'Artists','action' => 'delete', $artist->id],
-                ['class' => 'fa fa-trash-alt text-white '],
-                ['confirm' => '¿Estás segur@?']
-                )*/?></button>
-                <?php /*echo $this->Html->link(
-                'Editar',
-                '#',
-                ['class' => 'button']
-                
-            );
-              
-            //echo $this->Form->hidden('id',['value'=>$artist->id]);
-            */?>
-              <!--<input type="hidden" id="id" name="id" value="<?php //artist->id ?>">
-        -->
-        <button class="btn btn-info mr-2 mb-2 mt-2 task-edit">Editar</button>
+                </button>
+            <button class="btn btn-info mr-2 mb-2 mt-2 task-edit">Editar</button>
             </td>
         
         </tr>
@@ -67,41 +48,6 @@
 <script>
     
     $(function(){
-        $('#add-artista').on('click', function(){
-            $("#addmodal input").val("");
-            $("#addmodal input[type='checkbox']").prop('checked', false).change();
-            
-           $('#addmodal').modal('show');
-        
-                
-            $("#addform").on("submit", function(){
-                var postdata = $("#addform").serialize();
-                console.log(postdata);
-                alert("Espera");
-                
-                $.ajax({        
-                    url:"/artists/add",
-                    data:postdata,
-                    type: "JSON",
-                    method:"POST",
-                    success:function(response){
-                        alert("Se ha agregado");
-                        
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'Se ha actualizado exitosamente',
-                        showConfirmButton: false,
-                        timer: 1500
-                        })
-                    },
-                    
-                    error:function(response){
-                        alert(":(");
-                    }
-                })
-            });
-        });
 
         $(document).on('click', '.task-edit', function(){
             let element = $(this)[0].parentElement.parentElement;
@@ -121,7 +67,7 @@
                     type: "JSON",
                     method:"POST",
                     success:function(response){
-                        //alert(response);
+                        alert(response);
                     //window.location.href = '/artists'
                     Swal.fire({
                         position: 'center',
@@ -139,7 +85,45 @@
             });
             
         });
-
+        $(document).on('click', '.task-add', function(){
+            $("#addmodal input[type='text']").val("");
+            $("#addmodal input[type='checkbox']").prop('checked', false).change();
+            
+           $('#addmodal').modal('show');
+        
+                
+            $("#addform").on("submit", function(){
+                var postdata = $("#addform").serialize();
+                console.log(postdata);
+                
+                
+                $.ajax({        
+                    url:"<?= $this->Url->build(['controller' => 'Artists', 'action' => 'add'])?>",
+                    data:postdata,
+                    method:"POST",
+                    type: "JSON",
+                    success:function(response, textStatus){
+                        
+                        console.log(textStatus);
+                        alert("holi");
+                        //window.location.href = '/artists';
+                        //alert("holi x2");
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Se ha actualizado exitosamente',
+                            showConfirmButton: false,
+                            timer: 1500
+                            })
+                            
+                        },
+                    
+                    error:function(response){
+                        alert(":(");
+                    }
+                })
+            });
+        });
         $(document).on('click', '.task-delete', function(){
             let element = $(this)[0].parentElement.parentElement;
             let id = $(element).attr('artistID');

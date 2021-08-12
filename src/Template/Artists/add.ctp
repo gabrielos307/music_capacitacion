@@ -27,7 +27,8 @@ echo $this->Html->link(
         $("#form-artists").on("submit", function(){
             var postdata = $("#form-artists").serialize();
             console.log(postdata);
-            $.ajax({
+            alert("hhhh");
+            /*/$.ajax({
                 method:"POST",
                 url:"<?= $this->Url->build(['controller' => 'Artists', 'action' => 'add'])?>",
                 data:postdata,
@@ -36,8 +37,9 @@ echo $this->Html->link(
                 
                 window.location.href = '/artists'
                 }
-            })
+            })*/
             
         });
+        
     });
 </script>

@@ -34,15 +34,17 @@ class ArtistsController extends AppController{
                     "message" => "Se ha creado un artista"
 
                 ));
-                exit;
-                //return $this->redirect(['action' => 'index']);
+                dump($artists);
+                return $this->redirect(['action' => 'index']);
             }
-            /*$this->Flash->error(__('No se pudo agregar el artista'));
-            //echo json_encode(array(
+            //dump($artists);
+            //$this->Flash->error(__('No se pudo agregar el artista'));
+            $this->Flash->error(__($artists));
+            echo json_encode(array(
                 "status" => 0,
                 "message" => "Fallo la creación"
             ));
-            */
+            
         //}
         $this->set('artists', $artists);
     }
