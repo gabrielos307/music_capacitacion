@@ -34,7 +34,7 @@ class ArtistsTable extends Table
         $artists = $artistsTable->find('all');
         return $artists;
     }
-    
+    /*
     public function add($datos = null){
         //Les paso los datos del controlador
         $artistsTable = TableRegistry::getTableLocator()->get('Artists');
@@ -49,7 +49,7 @@ class ArtistsTable extends Table
             return true; //si los guarda, manda un true al controlador
         }
         return false;//sino regresa un false
-    }
+    }*/
     public function edit($datos = null, $id = null){
         //Les paso los datos del controlador
         $artistsTable = TableRegistry::getTableLocator()->get('Artists');  //Obtengo la tabla artists 
@@ -62,14 +62,15 @@ class ArtistsTable extends Table
         
     }
     
-    /*Creo que no se puede eliminar
-    public function delete(EntityInterface $entity, $options = []) 
+    //Creo que no se puede eliminar
+    public function deleteArtists( $entity, $options = []) 
     {
         //$this->request->allowMethod(['post', 'delete']);
+        //dump($entity);
         $artistsTable = TableRegistry::getTableLocator()->get('Artists');  
-        if ($entity->delete()) {
+        if ($artistsTable->delete($entity)) {
             return true;
         }
         return false;
-    }*/
+    }
 }

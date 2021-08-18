@@ -4,9 +4,14 @@
       <div class="modal-header">
         <h5 class="modal-title"><?php echo $accion ?></h5>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" idform="">
+      
+
+
       <?php
-        echo $this->Form->create('Artists', ['id'=>$idform]);
+       
+          echo $this->Form->create('Artists', ['id'=>$idform, 'url' => ['action' => $tipo]]);
+        
       ?>
       
       <?php

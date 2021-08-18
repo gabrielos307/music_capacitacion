@@ -1,8 +1,8 @@
 <?= $this->Html->script(['app.js']) ?>
 <div class="container">
 
-<?php echo $this->element('modal', ["accion" => "Agregar", "idmodal"=>"addmodal", "idform"=>"addform"]);?>
-<?php echo $this->element('modal', ["accion" => "Editar", "idmodal"=>"editmodal", "idform"=>"editform"]);?>
+<?php echo $this->element('modal', ["accion" => "Agregar", "idmodal"=>"addmodal", "idform"=>"addform", "tipo"=>"add"]);?>
+<?php echo $this->element('modal', ["accion" => "Editar", "idmodal"=>"editmodal", "idform"=>"editform","tipo"=>"edit"]);?>
 
 <h1>Artistas</h1>
 <button class="btn btn-primary mr-2 mb-2 mt-2 task-add">Agregar</button>
@@ -54,20 +54,20 @@
             
             let id = $(element).attr('artistID');
 
-            
+            $('#editform').attr('action', '/artists/edit/'+id)
             $('#editmodal').modal('show');
             $("#editform").on("submit", function(){
                 var postdata = $("#editform").serialize();
                 
                 console.log(postdata);
-                alert("espera");
+                //alert("espera");
                 $.ajax({
                     url:"/artists/edit/"+id,
                     data:postdata,
                     type: "JSON",
                     method:"POST",
                     success:function(response){
-                        alert(response);
+                        //alert(response);
                     //window.location.href = '/artists'
                     Swal.fire({
                         position: 'center',
@@ -76,6 +76,7 @@
                         showConfirmButton: false,
                         timer: 1500
                         })
+                        window.location.href = '/artists'
                     },
                     error:function(response){
                         alert("awanta")
@@ -95,13 +96,12 @@
             $("#addform").on("submit", function(){
                 var postdata = $("#addform").serialize();
                 console.log(postdata);
-                
-                alert(":(");
+                alert("0");   
                 $.ajax({        
                     url:"/artists/add",
                     data:postdata,
-                    method:"POST",
                     type: "JSON",
+                    method:"POST",
                     success:function(response, textStatus){
                         
                         console.log(textStatus);
@@ -115,12 +115,12 @@
                             showConfirmButton: false,
                             timer: 1500
                             })
+                            window.location.href = '/artists'
                             
-                        },
-                    
-                    error:function(response,textStatus){
-                        console.log(textStatus);
-                        alert(":(");
+                    },
+                    error: function (request) {
+                        console.log(request);
+                        //alert(error);
                     }
                 })
             });

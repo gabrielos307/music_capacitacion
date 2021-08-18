@@ -2,6 +2,7 @@
 namespace App\Controller;
 use Cake\Http\ServerRequest;
 use Cake\Http\Response;
+use Cake\Event\Event;   
 
 class ArtistsController extends AppController{
 
@@ -25,18 +26,18 @@ class ArtistsController extends AppController{
     }
     public function add(){
         //if($this->request->is('ajax')){
-            
-            /*$artists  = $this->Artists->newEntity();
-            $artists = $this->Artists->patchEntity($artists, $this->request->getData());*/
+            /*
+            $artists  = $this->Artists->newEntity();
+            $artists = $this->Artists->patchEntity($artists, $this->request->getData());
             //dump($artists);
-            /*if($this->Artists->save($artists)){
+            if($this->Artists->save($artists)){
                 $this->Flash->success(__('Se ha guardado el artista'));
                 echo json_encode(array(
                     "status" => 1,
                     "message" => "Se ha creado un artista"
 
                 ));
-                dump($artists);
+                //dump($artists);
                 return $this->redirect(['action' => 'index']);
             }
             //dump($artists);
@@ -47,9 +48,12 @@ class ArtistsController extends AppController{
                 "message" => "Fallo la creación"
             ));
             
-        //}*/
+        //}
+        */
         //método add del modelo, y le pasamos los datos hacia la funcion modelo
         //y lo guarda en bandera dependiendo de un true o false
+        
+        $artists = $this->Artists->get($id); //opcional
         $bandera = $this->Artists->add($this->request->getData());
         if($bandera){//si es true
             //los guarda
@@ -59,20 +63,24 @@ class ArtistsController extends AppController{
                 "message" => "Se ha creado un artista"
 
             ));
+            return $this->redirect(['action' => 'index']);
         }
         $this->Flash->error(__($artists));
             echo json_encode(array(
                 "status" => 0,
                 "message" => "Fallo la creación"
             ));
+            return $this->redirect(['action' => 'index']);
         //manda artists a la vista
-        $this->set('artists', $artists);
+        //$this->set('artists', $artists);
+        
     }
     public function edit($id = null){
         //obtengo la funcion edit del controlador y le paso los datos recolectados junto con el id
+        $artists = $this->Artists->get($id); //opcional
         $bandera = $this->Artists->edit($this->request->getData(), $id);
         //obtenemos los artistas con el id
-        $artists = $this->Artists->get($id); //opcional
+        
         if($bandera){//si los actualiza
             //regresa un mensaje
             $this->Flash->success(__('Se ha guardado el artista'));
@@ -81,6 +89,8 @@ class ArtistsController extends AppController{
                 "message" => "Se ha creado un artista"
 
             ));
+            return $this->redirect(['action' => 'index']);
+
         }
         //si no los actualiza
         $this->Flash->error(__($artists));
@@ -88,8 +98,9 @@ class ArtistsController extends AppController{
                 "status" => 0,
                 "message" => "Fallo la creación"
             ));
+            return $this->redirect(['action' => 'index']);
         //mandamos artists a la vista
-            $this->set('artists', $artists);
+            //$this->set('artists', $artists);
     }
     //me atore :P
     public function delete($id)
@@ -97,7 +108,7 @@ class ArtistsController extends AppController{
         //$this->request->allowMethod(['post', 'delete']);
 
         $artists = $this->Artists->get($id);
-        $result = $this->Artists->delete($artists,['atomic' => false]);
+        $result = $this->Artists->deleteArtists($artists,['atomic' => false]);
         if ($result) {
             echo json_encode(array(
                 "status" => 1,
