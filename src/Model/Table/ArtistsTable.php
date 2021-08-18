@@ -8,6 +8,8 @@ use Cake\ORM\Table;
 use Cake\ORM\TableRegistry;
 use Cake\Http\Response;
 use Cake\Routing\Router;
+use Cake\ORM\Entity;
+use Cake\Datasource\EntityInterface;
 
 class ArtistsTable extends Table
 {
@@ -59,14 +61,13 @@ class ArtistsTable extends Table
         return false;//sino un false
         
     }
-    /*
-    Creo que no se puede eliminar
-    public function delete($id=null)
+    
+    /*Creo que no se puede eliminar
+    public function delete(EntityInterface $entity, $options = []) 
     {
         //$this->request->allowMethod(['post', 'delete']);
         $artistsTable = TableRegistry::getTableLocator()->get('Artists');  
-        $artists = $artistsTable->get($id);
-        if ($artistsTable->delete($artists)) {
+        if ($entity->delete()) {
             return true;
         }
         return false;

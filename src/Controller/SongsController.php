@@ -136,7 +136,7 @@ class SongsController extends AppController
         
     }
 
-
+/*
     public function delete($id){
         $this->request->allowMethod(['post','delete']);
         $song = $this->Songs->get($id);
@@ -144,5 +144,5 @@ class SongsController extends AppController
             $this->Flash->success(__('La canción con id: {0} ha sido eliminada', h($id)));
             return $this->redirect(['action' => 'index']);
         }
-    }
+    }*/
 }

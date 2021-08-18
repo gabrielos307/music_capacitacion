@@ -13,6 +13,7 @@ class ArtistsController extends AppController{
     public function index(){
         
         $artists = $this->Artists->index();
+        
         $this->set(compact('artists'));
         //$this->set(compact('artist'));
     }
@@ -59,6 +60,11 @@ class ArtistsController extends AppController{
 
             ));
         }
+        $this->Flash->error(__($artists));
+            echo json_encode(array(
+                "status" => 0,
+                "message" => "Fallo la creación"
+            ));
         //manda artists a la vista
         $this->set('artists', $artists);
     }
@@ -90,8 +96,9 @@ class ArtistsController extends AppController{
     {
         //$this->request->allowMethod(['post', 'delete']);
 
-        $artists = $this->Artists->delete($id);
-        if ($artists) {
+        $artists = $this->Artists->get($id);
+        $result = $this->Artists->delete($artists,['atomic' => false]);
+        if ($result) {
             echo json_encode(array(
                 "status" => 1,
                 "message" => "Se ha eliminado un artista"
