@@ -60,7 +60,7 @@
                 var postdata = $("#editform").serialize();
                 
                 console.log(postdata);
-
+                alert("espera");
                 $.ajax({
                     url:"/artists/edit/"+id,
                     data:postdata,
@@ -96,9 +96,9 @@
                 var postdata = $("#addform").serialize();
                 console.log(postdata);
                 
-                
+                alert(":(");
                 $.ajax({        
-                    url:"<?= $this->Url->build(['controller' => 'Artists', 'action' => 'add'])?>",
+                    url:"/artists/add",
                     data:postdata,
                     method:"POST",
                     type: "JSON",
@@ -118,7 +118,8 @@
                             
                         },
                     
-                    error:function(response){
+                    error:function(response,textStatus){
+                        console.log(textStatus);
                         alert(":(");
                     }
                 })

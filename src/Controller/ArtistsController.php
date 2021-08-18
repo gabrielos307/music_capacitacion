@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
-
+use Cake\Http\ServerRequest;
+use Cake\Http\Response;
 
 class ArtistsController extends AppController{
 
@@ -11,7 +12,7 @@ class ArtistsController extends AppController{
     }
     public function index(){
         
-        $artists = $this->Artists->find('all');
+        $artists = $this->Artists->index();
         $this->set(compact('artists'));
         //$this->set(compact('artist'));
     }
@@ -24,10 +25,10 @@ class ArtistsController extends AppController{
     public function add(){
         //if($this->request->is('ajax')){
             
-            $artists  = $this->Artists->newEntity();
-            $artists = $this->Artists->patchEntity($artists, $this->request->getData());
+            /*$artists  = $this->Artists->newEntity();
+            $artists = $this->Artists->patchEntity($artists, $this->request->getData());*/
             //dump($artists);
-            if($this->Artists->save($artists)){
+            /*if($this->Artists->save($artists)){
                 $this->Flash->success(__('Se ha guardado el artista'));
                 echo json_encode(array(
                     "status" => 1,
@@ -45,35 +46,52 @@ class ArtistsController extends AppController{
                 "message" => "Fallo la creación"
             ));
             
-        //}
+        //}*/
+        //método add del modelo, y le pasamos los datos hacia la funcion modelo
+        //y lo guarda en bandera dependiendo de un true o false
+        $bandera = $this->Artists->add($this->request->getData());
+        if($bandera){//si es true
+            //los guarda
+            $this->Flash->success(__('Se ha guardado el artista'));
+            echo json_encode(array(
+                "status" => 1,
+                "message" => "Se ha creado un artista"
+
+            ));
+        }
+        //manda artists a la vista
         $this->set('artists', $artists);
     }
     public function edit($id = null){
-        $artists = $this->Artists->get($id);
-        if($this->request->is(['post', 'put'])){
-            $this->Artists->patchEntity($artists, $this->request->getData());
-            if($this->Artists->save($artists)){
-                echo json_encode(array(
-                    "status" => 1,
-                    "message" => "Se ha actualizado un artista"
+        //obtengo la funcion edit del controlador y le paso los datos recolectados junto con el id
+        $bandera = $this->Artists->edit($this->request->getData(), $id);
+        //obtenemos los artistas con el id
+        $artists = $this->Artists->get($id); //opcional
+        if($bandera){//si los actualiza
+            //regresa un mensaje
+            $this->Flash->success(__('Se ha guardado el artista'));
+            echo json_encode(array(
+                "status" => 1,
+                "message" => "Se ha creado un artista"
 
-                ));
-                exit;
-            }
-            $this->Flash->error(__('Tu artista no se pudo actualizar'));
+            ));
+        }
+        //si no los actualiza
+        $this->Flash->error(__($artists));
             echo json_encode(array(
                 "status" => 0,
                 "message" => "Fallo la creación"
             ));
-        }
-        $this->set('artists', $artists);
+        //mandamos artists a la vista
+            $this->set('artists', $artists);
     }
+    //me atore :P
     public function delete($id)
     {
         //$this->request->allowMethod(['post', 'delete']);
 
-        $artists = $this->Artists->get($id);
-        if ($this->Artists->delete($artists)) {
+        $artists = $this->Artists->delete($id);
+        if ($artists) {
             echo json_encode(array(
                 "status" => 1,
                 "message" => "Se ha eliminado un artista"
@@ -85,6 +103,7 @@ class ArtistsController extends AppController{
             "status" => 0,
             "message" => "Fallo eliminar"
         ));
+        exit;
     }
     
 
