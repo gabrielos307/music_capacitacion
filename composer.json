@@ -12,7 +12,9 @@
         "drmonkeyninja/cakephp-font-awesome": "*",
         "mobiledetect/mobiledetectlib": "2.*",
         "patrickquijano/cakephp3-fontawesome": "dev-master",
-        "simtecsystem/cakephp-adminlte-theme": "^1.1"
+        "sciactive/pnotify": "^4.0",
+        "simtecsystem/cakephp-adminlte-theme": "^1.1",
+        "yoeunes/notify": "^1.0"
     },
     "require-dev": {
         "cakephp/bake": "^1.9.0",

@@ -34,7 +34,7 @@ class ArtistsTable extends Table
         $artists = $artistsTable->find('all');
         return $artists;
     }
-    /*
+    
     public function add($datos = null){
         //Les paso los datos del controlador
         $artistsTable = TableRegistry::getTableLocator()->get('Artists');
@@ -49,7 +49,7 @@ class ArtistsTable extends Table
             return true; //si los guarda, manda un true al controlador
         }
         return false;//sino regresa un false
-    }*/
+    }
     public function edit($datos = null, $id = null){
         //Les paso los datos del controlador
         $artistsTable = TableRegistry::getTableLocator()->get('Artists');  //Obtengo la tabla artists 

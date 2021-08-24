@@ -53,11 +53,12 @@ class ArtistsController extends AppController{
         //método add del modelo, y le pasamos los datos hacia la funcion modelo
         //y lo guarda en bandera dependiendo de un true o false
         
-        $artists = $this->Artists->get($id); //opcional
+        //$artists = $this->Artists->get($id); //opcional
         $bandera = $this->Artists->add($this->request->getData());
         if($bandera){//si es true
             //los guarda
-            $this->Flash->success(__('Se ha guardado el artista'));
+           // $this->Flash->success(__('Se ha guardado el artista'));
+           notify()->success('Data has been saved successfully!');
             echo json_encode(array(
                 "status" => 1,
                 "message" => "Se ha creado un artista"

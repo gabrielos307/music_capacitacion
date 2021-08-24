@@ -5,7 +5,9 @@
 <?php echo $this->element('modal', ["accion" => "Editar", "idmodal"=>"editmodal", "idform"=>"editform","tipo"=>"edit"]);?>
 
 <h1>Artistas</h1>
+
 <button class="btn btn-primary mr-2 mb-2 mt-2 task-add">Agregar</button>
+<button id="click" class="btn btn-primary mr-2 mb-2 mt-2">Click we</button>
 <table>
     <tr>
         <th>Id</th>
@@ -45,9 +47,25 @@
 </table>
 </div>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
     
-    $(function(){
+    $(function(){   
+        $(document).on('click', '#click',function(){
+            $.pnotify.notice({
+                title: 'Custom Button Icons Notice',
+                text: 'Check me out! My sticker and close buttons have custom icons!',
+                hide: false,
+                icons: {
+                    prefix: PNotify.defaults.icons,
+
+                    closer: 'fas fa-bomb',
+                    sticker: 'fas',
+                    stuck: 'fa-hourglass',
+                    unstuck: 'fa-anchor'
+                }
+            }); 
+        });
 
         $(document).on('click', '.task-edit', function(){
             let element = $(this)[0].parentElement.parentElement;
@@ -108,6 +126,7 @@
                         alert("holi");
                         //window.location.href = '/artists';
                         //alert("holi x2");
+                        /*
                         Swal.fire({
                             position: 'center',
                             icon: 'success',
@@ -115,6 +134,8 @@
                             showConfirmButton: false,
                             timer: 1500
                             })
+                            */
+                            
                             window.location.href = '/artists'
                             
                     },

@@ -79,6 +79,7 @@ try {
 
 
 Configure::load('adminlte', 'default');
+Configure::load('notify', 'default');
 //Plugin::load('FontAwesome');
 
 /*
