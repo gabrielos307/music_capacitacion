@@ -51,21 +51,6 @@
 <script>
     
     $(function(){   
-        $(document).on('click', '#click',function(){
-            $.pnotify.notice({
-                title: 'Custom Button Icons Notice',
-                text: 'Check me out! My sticker and close buttons have custom icons!',
-                hide: false,
-                icons: {
-                    prefix: PNotify.defaults.icons,
-
-                    closer: 'fas fa-bomb',
-                    sticker: 'fas',
-                    stuck: 'fa-hourglass',
-                    unstuck: 'fa-anchor'
-                }
-            }); 
-        });
 
         $(document).on('click', '.task-edit', function(){
             let element = $(this)[0].parentElement.parentElement;
@@ -87,13 +72,10 @@
                     success:function(response){
                         //alert(response);
                     //window.location.href = '/artists'
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'Se ha actualizado exitosamente',
-                        showConfirmButton: false,
-                        timer: 1500
-                        })
+                    PNotify.success({
+                    title: 'Registro',
+                    text: 'Se ha actualizado'
+                    }); 
                         window.location.href = '/artists'
                     },
                     error:function(response){
@@ -113,18 +95,20 @@
                 
             $("#addform").on("submit", function(){
                 var postdata = $("#addform").serialize();
-                console.log(postdata);
-                alert("0");   
                 $.ajax({        
                     url:"/artists/add",
                     data:postdata,
                     type: "JSON",
                     method:"POST",
-                    success:function(response, textStatus){
-                        
-                        console.log(textStatus);
+                    success:function(response){
+                        alert("Exito laik de gobernador");
+                        PNotify.success({
+                            title: 'Registro',
+                            text: 'Se ha eliminado '
+                            });
+                        //console.log(textStatus);
                         alert("holi");
-                        //window.location.href = '/artists';
+                        window.location.href = '/artists';
                         //alert("holi x2");
                         /*
                         Swal.fire({
@@ -136,7 +120,6 @@
                             })
                             */
                             
-                            window.location.href = '/artists'
                             
                     },
                     error: function (request) {
@@ -170,11 +153,16 @@
                     method: "POST",
                     success: function(response){
                         console.log(response);
+                        /*
                         Swal.fire(
                         'Deleted!',
                         'Your file has been deleted.',
                         'success'
-                        )
+                        )*/
+                        PNotify.success({
+                            title: 'Registro',
+                            text: 'Se ha eliminado '
+                            }); 
                         window.location.href = '/artists'
                         
                     },

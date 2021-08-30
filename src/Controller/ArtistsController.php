@@ -58,20 +58,20 @@ class ArtistsController extends AppController{
         if($bandera){//si es true
             //los guarda
            // $this->Flash->success(__('Se ha guardado el artista'));
-           notify()->success('Data has been saved successfully!');
+           //notify()->success('Data has been saved successfully!');
             echo json_encode(array(
                 "status" => 1,
                 "message" => "Se ha creado un artista"
 
             ));
-            return $this->redirect(['action' => 'index']);
+            exit;
         }
         $this->Flash->error(__($artists));
             echo json_encode(array(
                 "status" => 0,
                 "message" => "Fallo la creación"
             ));
-            return $this->redirect(['action' => 'index']);
+            exit;
         //manda artists a la vista
         //$this->set('artists', $artists);
         
@@ -84,17 +84,17 @@ class ArtistsController extends AppController{
         
         if($bandera){//si los actualiza
             //regresa un mensaje
-            $this->Flash->success(__('Se ha guardado el artista'));
+            //$this->Flash->success(__('Se ha guardado el artista'));
             echo json_encode(array(
                 "status" => 1,
                 "message" => "Se ha creado un artista"
 
             ));
-            return $this->redirect(['action' => 'index']);
+            exit;   
 
         }
         //si no los actualiza
-        $this->Flash->error(__($artists));
+        //$this->Flash->error(__($artists));
             echo json_encode(array(
                 "status" => 0,
                 "message" => "Fallo la creación"
