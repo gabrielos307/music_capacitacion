@@ -95,22 +95,24 @@
                 
             $("#addform").on("submit", function(){
                 var postdata = $("#addform").serialize();
+                console.log(postdata);
+                alert("espera");
                 $.ajax({        
                     url:"/artists/add",
                     data:postdata,
                     type: "JSON",
                     method:"POST",
                     success:function(response){
-                        alert("Exito laik de gobernador");
-                        PNotify.success({
+                        //console.log(response);
+                        /*PNotify.success({
                             title: 'Registro',
-                            text: 'Se ha eliminado '
+                            text: 'Se ha agregado '
                             });
                         //console.log(textStatus);
-                        alert("holi");
+                        alert("holi");*/
                         window.location.href = '/artists';
                         //alert("holi x2");
-                        /*
+                        
                         Swal.fire({
                             position: 'center',
                             icon: 'success',
@@ -118,13 +120,13 @@
                             showConfirmButton: false,
                             timer: 1500
                             })
-                            */
+                            
                             
                             
                     },
-                    error: function (request) {
-                        console.log(request);
-                        //alert(error);
+                    error: function (response) {
+                        console.log(response);
+                        alert('chester');
                     }
                 })
             });

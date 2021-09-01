@@ -63,7 +63,7 @@ class ArtistsTable extends Table
     }
     
     //Creo que no se puede eliminar
-    public function deleteArtists( $entity, $options = []) 
+    public function deleteArtists( $entity) 
     {
         //$this->request->allowMethod(['post', 'delete']);
         //dump($entity);

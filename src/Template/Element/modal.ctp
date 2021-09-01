@@ -10,7 +10,8 @@
 
       <?php
        
-          echo $this->Form->create('Artists', ['id'=>$idform, 'url' => ['action' => $tipo]]);
+          //echo $this->Form->create('Artists', ['id'=>$idform, 'url' => ['action' => $tipo]]);
+          echo $this->Form->create('Artists', ['id'=>$idform ]);
         
       ?>
       

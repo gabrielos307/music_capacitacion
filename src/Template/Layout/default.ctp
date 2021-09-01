@@ -95,7 +95,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
     <!-- REQUIRED SCRIPTS -->
     <!-- Bootstrap 4 -->
-    <?php echo $this->Html->script('bootstrap.bundle.min'); ?>
+    <?php echo $this->Html->script('bootstrap-bundle.min'); ?>
     <!-- overlayScrollbars -->
     <?php echo $this->Html->script('jquery.overlayScrollbars.min'); ?>
     <!-- AdminLTE App -->
