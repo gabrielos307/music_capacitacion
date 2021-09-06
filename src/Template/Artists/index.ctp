@@ -36,7 +36,7 @@
                 //type:'JSON',
                 //data:listo,
                 success:function(response){
-                    console.log(response);
+                    //console.log(response);
                     //let respuestas = JSON.parse(response);
                     let template = '';
                     $('#lista').html(response);
@@ -81,16 +81,18 @@
                     method:"POST",
                     success:function(response){
                         //alert(response);
-                    window.location.href = '/artists'
+                    //window.location.href = '/artists'
+                    
                     PNotify.success({
                     title: 'Registro',
                     text: 'Se ha actualizado'
                     }); 
-                        //window.location.href = '/artists'
+                    alert("awanta")
+                    window.location.href = '/artists'
                     },
-                    error:function(response){
+                    error:function(response, textStatus,errorThrown){
                         //alert("awanta")
-                        console.log(response);
+                        console.log(errorThrown);
                     }
                 })
             });

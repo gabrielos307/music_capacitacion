@@ -27,7 +27,7 @@ class ArtistsController extends AppController{
         foreach ($artists as $key) {
             $template = '';
             $template .= '   
-            <tr>
+            <tr artistID="'.$key["id"].'" id="t-row">
             <td>'.$key["id"].'</td>
             <td>'.$key["nombre"].'</td>
             <td>'.$key["nacimiento"].'</td>';
