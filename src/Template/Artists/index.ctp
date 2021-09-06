@@ -17,32 +17,7 @@
         <th>Acción</th>
     </tr>
     <tbody id="lista">
-    <?php foreach ($artists as $artist): ?>
-        <tr artistID="<?=$artist->id ?>" id="t-row">
-            <td><?=$artist->id ?></td>
-            <td artistNombre="<?=$artist->nombre ?>">
-                <?=$this->Html->link($artist->nombre,
-                ['controller' => 'Artists', 'action' => 'view', $artist->id]) ?>
-            </td>
-            <td artistNaci="<?=$artist->nacimiento ?>">
-                <?=$artist->nacimiento?>
-            </td>
-            <td artistBanda="<?=$artist->es_banda ?>"> 
-                <?php if ($artist->es_banda === true):?>
-                    Es banda
-                <?php elseif($artist->es_banda === false):?>
-                     Es solista
-                <?php endif; ?>
-            </td>
-            <td>
-            <button class="btn btn-danger mr-2 mb-2 mt-2 task-delete">
-                Delete
-                </button>
-            <button class="btn btn-info mr-2 mb-2 mt-2 task-edit">Editar</button>
-            </td>
         
-        </tr>
-    <?php endforeach;?>
     </tbody>
 </table>
 </div>
@@ -51,6 +26,41 @@
 <script>
     
     $(function(){   
+        $(document).ready(function(){
+            let listo = true;
+            console.log(listo);
+
+            $.ajax({
+                url:'/artists/listado',
+                //method:'POST',
+                //type:'JSON',
+                //data:listo,
+                success:function(response){
+                    console.log(response);
+                    //let respuestas = JSON.parse(response);
+                    let template = '';
+                    $('#lista').html(response);
+                    // respuestas.forEach(element => {
+                        
+                    //     $('.id-artists').html(element.id);
+                    //     $('.nombre-artists').html(element.nombre);
+                    //     $('.naci-artists').html(element.nacimiento);
+                        
+                    //     if (element.es_banda){
+                    //         $('.banda-artists').html('es banda');
+                    //     }else{
+                    //         $('.banda-artists').html('es banda');
+                    //     }
+                    // });
+                },
+                error:function(response){
+                        //alert("awanta")
+                        console.log(response);
+                    }
+
+            });
+            listo = false;
+        });
 
         $(document).on('click', '.task-edit', function(){
             let element = $(this)[0].parentElement.parentElement;
@@ -62,7 +72,7 @@
             $("#editform").on("submit", function(){
                 var postdata = $("#editform").serialize();
                 
-                console.log(postdata);
+                //console.log(postdata);
                 //alert("espera");
                 $.ajax({
                     url:"/artists/edit/"+id,
@@ -71,15 +81,15 @@
                     method:"POST",
                     success:function(response){
                         //alert(response);
-                    //window.location.href = '/artists'
+                    window.location.href = '/artists'
                     PNotify.success({
                     title: 'Registro',
                     text: 'Se ha actualizado'
                     }); 
-                        window.location.href = '/artists'
+                        //window.location.href = '/artists'
                     },
                     error:function(response){
-                        alert("awanta")
+                        //alert("awanta")
                         console.log(response);
                     }
                 })
@@ -96,7 +106,7 @@
             $("#addform").on("submit", function(){
                 var postdata = $("#addform").serialize();
                 console.log(postdata);
-                alert("espera");
+                //alert("espera");
                 $.ajax({        
                     url:"/artists/add",
                     data:postdata,
@@ -104,22 +114,23 @@
                     method:"POST",
                     success:function(response){
                         //console.log(response);
-                        /*PNotify.success({
+                        PNotify.success({
                             title: 'Registro',
                             text: 'Se ha agregado '
                             });
                         //console.log(textStatus);
-                        alert("holi");*/
-                        window.location.href = '/artists';
-                        //alert("holi x2");
-                        
-                        Swal.fire({
+                        //alert("holi");
+                        /*Swal.fire({
                             position: 'center',
                             icon: 'success',
                             title: 'Se ha actualizado exitosamente',
                             showConfirmButton: false,
                             timer: 1500
-                            })
+                            })*/
+                        window.location.href = '/artists';
+                        //alert("holi x2");
+                        
+                        
                             
                             
                             
