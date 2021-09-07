@@ -164,7 +164,7 @@
                             text: 'Se ha eliminado '
                             }); 
                         //window.location.href = '/artists'
-                       
+                       listado();
                     },
                     error:function(response){
                         
