@@ -24,11 +24,8 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-    
-    $(function(){   
-        $(document).ready(function(){
-            let listo = true;
-            console.log(listo);
+    function listado(){
+            
 
             $.ajax({
                 url:'/artists/listado',
@@ -40,27 +37,23 @@
                     //let respuestas = JSON.parse(response);
                     let template = '';
                     $('#lista').html(response);
-                    // respuestas.forEach(element => {
-                        
-                    //     $('.id-artists').html(element.id);
-                    //     $('.nombre-artists').html(element.nombre);
-                    //     $('.naci-artists').html(element.nacimiento);
-                        
-                    //     if (element.es_banda){
-                    //         $('.banda-artists').html('es banda');
-                    //     }else{
-                    //         $('.banda-artists').html('es banda');
-                    //     }
-                    // });
+                    
                 },
                 error:function(response){
                         //alert("awanta")
                         console.log(response);
-                    }
+                }
 
             });
-            listo = false;
+        };
+    $(function(){  
+        
+         
+        $(document).ready(function(){
+            listado();
         });
+
+        
 
         $(document).on('click', '.task-edit', function(){
             let element = $(this)[0].parentElement.parentElement;
@@ -70,6 +63,7 @@
             $('#editform').attr('action', '/artists/edit/'+id)
             $('#editmodal').modal('show');
             $("#editform").on("submit", function(){
+                event.preventDefault();
                 var postdata = $("#editform").serialize();
                 
                 //console.log(postdata);
@@ -87,12 +81,14 @@
                     title: 'Registro',
                     text: 'Se ha actualizado'
                     }); 
-                    alert("awanta")
-                    window.location.href = '/artists'
+                    //alert("awanta")
+                    //window.location.href = '/artists'
+                    $('#editmodal').modal('hide');
+                    listado();
                     },
                     error:function(response, textStatus,errorThrown){
                         //alert("awanta")
-                        console.log(errorThrown);
+                        console.log(textStatus);
                     }
                 })
             });
@@ -106,9 +102,9 @@
         
                 
             $("#addform").on("submit", function(){
+                event.preventDefault();
                 var postdata = $("#addform").serialize();
                 console.log(postdata);
-                //alert("espera");
                 $.ajax({        
                     url:"/artists/add",
                     data:postdata,
@@ -120,22 +116,10 @@
                             title: 'Registro',
                             text: 'Se ha agregado '
                             });
-                        //console.log(textStatus);
-                        //alert("holi");
-                        /*Swal.fire({
-                            position: 'center',
-                            icon: 'success',
-                            title: 'Se ha actualizado exitosamente',
-                            showConfirmButton: false,
-                            timer: 1500
-                            })*/
-                        window.location.href = '/artists';
-                        //alert("holi x2");
                         
-                        
-                            
-                            
-                            
+                        $('#addmodal').modal('hide');
+                        listado();
+                        alert("espera");
                     },
                     error: function (response) {
                         console.log(response);
@@ -160,6 +144,7 @@
                 confirmButtonText: 'Sí, eliminar!'
                 }).then((result) => {
                 if (result.isConfirmed) {
+                    event.preventDefault();
                     
                     $.ajax({
                     url: "/artists/delete/"+id,
@@ -178,8 +163,8 @@
                             title: 'Registro',
                             text: 'Se ha eliminado '
                             }); 
-                        window.location.href = '/artists'
-                        
+                        //window.location.href = '/artists'
+                       
                     },
                     error:function(response){
                         

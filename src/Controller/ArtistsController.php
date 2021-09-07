@@ -87,11 +87,11 @@ class ArtistsController extends AppController{
         if($bandera){//si los actualiza
             //regresa un mensaje
             
-            echo json_encode(array(
-                "status" => 1,
-                "message" => "Se ha editado un artista"
+            // echo json_encode(array(
+            //     "status" => 1,
+            //     "message" => "Se ha editado un artista"
 
-            ));
+            // ));
             exit;
         }
         echo json_encode(array(
