@@ -60,12 +60,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
     <?php echo $this->fetch('css'); ?>
 
-    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">-->
+    
 </head>
 <body class="sidebar-mini layout-fixed  <?= $this->fetch('custom_css_name'); ?>">
-<div class="container">
-        <p>Weeeeeeeeeeeeeeee</p>
-    </div>
     <div class="wrapper">
         <?php echo $this->element('nav-top'); ?>
 
@@ -102,11 +99,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?php echo $this->Html->script('adminlte.min'); ?>
 
     <!-- jQuery UI 1.11.4 -->
-    <?php echo $this->Html->script('jquery-ui.min'); ?>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <script>
-        //$.widget.bridge('uibutton', $.ui.button)
-    </script>
+     <?php echo $this->Html->script('jquery-ui.min'); ?>
     <!-- Sparkline -->
     <?php echo $this->Html->script('sparkline'); ?>
     <!-- jQuery Knob Chart -->

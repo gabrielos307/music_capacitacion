@@ -8,13 +8,13 @@
 
 <button class="btn btn-primary mr-2 mb-2 mt-2 task-add">Agregar</button>
 <button id="click" class="btn btn-primary mr-2 mb-2 mt-2">Click we</button>
-<table>
+<table class="table">
     <tr>
+        <th>Acción</th>
         <th>Id</th>
         <th>Nombre</th>
         <th>Nacimiento</th>
         <th>Es banda</th>
-        <th>Acción</th>
     </tr>
     <tbody id="lista">
         
@@ -25,69 +25,43 @@
 
 <script>
     function listado(){
-            
-
             $.ajax({
                 url:'/artists/listado',
-                //method:'POST',
-                //type:'JSON',
-                //data:listo,
                 success:function(response){
-                    //console.log(response);
-                    //let respuestas = JSON.parse(response);
                     let template = '';
                     $('#lista').html(response);
-                    
                 },
                 error:function(response){
-                        //alert("awanta")
-                        console.log(response);
+                    console.log(response);
                 }
-
             });
         };
     $(function(){  
-        
-         
         $(document).ready(function(){
             listado();
         });
-
-        
-
         $(document).on('click', '.task-edit', function(){
-            let element = $(this)[0].parentElement.parentElement;
-            
+            let element = $(this)[0].parentElement.parentElement; 
             let id = $(element).attr('artistID');
-
             $('#editform').attr('action', '/artists/edit/'+id)
             $('#editmodal').modal('show');
             $("#editform").on("submit", function(){
                 event.preventDefault();
                 var postdata = $("#editform").serialize();
-                
-                //console.log(postdata);
-                //alert("espera");
                 $.ajax({
                     url:"/artists/edit/"+id,
                     data:postdata,
                     type: "JSON",
                     method:"POST",
                     success:function(response){
-                        //alert(response);
-                    //window.location.href = '/artists'
-                    
-                    PNotify.success({
-                    title: 'Registro',
-                    text: 'Se ha actualizado'
-                    }); 
-                    //alert("awanta")
-                    //window.location.href = '/artists'
-                    $('#editmodal').modal('hide');
-                    listado();
+                        PNotify.success({
+                        title: 'Registro',
+                        text: 'Se ha actualizado'
+                        }); 
+                        $('#editmodal').modal('hide');
+                        listado();
                     },
                     error:function(response, textStatus,errorThrown){
-                        //alert("awanta")
                         console.log(textStatus);
                     }
                 })
@@ -104,14 +78,12 @@
             $("#addform").on("submit", function(){
                 event.preventDefault();
                 var postdata = $("#addform").serialize();
-                console.log(postdata);
                 $.ajax({        
                     url:"/artists/add",
                     data:postdata,
                     type: "JSON",
                     method:"POST",
                     success:function(response){
-                        //console.log(response);
                         PNotify.success({
                             title: 'Registro',
                             text: 'Se ha agregado '
@@ -147,38 +119,23 @@
                     event.preventDefault();
                     
                     $.ajax({
-                    url: "/artists/delete/"+id,
-                    data: postdata,
-                    type: "JSON",
-                    method: "POST",
-                    success: function(response){
-                        console.log(response);
-                        /*
-                        Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                        )*/
-                        PNotify.success({
-                            title: 'Registro',
-                            text: 'Se ha eliminado '
-                            }); 
-                        //window.location.href = '/artists'
-                       listado();
-                    },
-                    error:function(response){
-                        
-                        console.log(postdata);
-                        
-                    }
-                })
-                    
+                        url: "/artists/delete/"+id,
+                        data: postdata,
+                        type: "JSON",
+                        method: "POST",
+                        success: function(response){
+                            PNotify.success({
+                                title: 'Registro',
+                                text: 'Se ha eliminado '
+                                }); 
+                        listado();
+                        },
+                        error:function(response){
+                            console.log(postdata);
+                        }
+                    })    
                 }
-                })
-            
-            
+            })
         });
     });
-
-
 </script>

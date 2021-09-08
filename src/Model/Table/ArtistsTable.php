@@ -16,11 +16,8 @@ class ArtistsTable extends Table
     public function initialize(array $config)
     {
         $this->addBehavior('Timestamp');
-        //$this->addBehavior('Tree');
         $this->hasMany('Songs')
             ->setForeignKey('artista_id');
-        ///$this->loadComponent('RequestHandler');
-            
     }
     public function validationDefault(Validator $validator){
         $validator
@@ -36,37 +33,27 @@ class ArtistsTable extends Table
     }
     
     public function add($datos = null){
-        //Les paso los datos del controlador
         $artistsTable = TableRegistry::getTableLocator()->get('Artists');
-
-        //Generamos un nuevo registro
         $artists = $artistsTable->newEntity();
-        
-        $artists = $artistsTable->patchEntity($artists, $datos);//Guardo en artists de acuerdo a los datos
-        //dump($artistsTable);
+        $artists = $artistsTable->patchEntity($artists, $datos);
         if($artistsTable->save($artists)){
-            //dump($artists);
-            return true; //si los guarda, manda un true al controlador
+            return true;
         }
-        return false;//sino regresa un false
+        return false;
     }
     public function edit($datos = null, $id = null){
-        //Les paso los datos del controlador
-        $artistsTable = TableRegistry::getTableLocator()->get('Artists');  //Obtengo la tabla artists 
-        $artists = $artistsTable->get($id); //obtengo los artistas a traves del id
-        $artists = $artistsTable->patchEntity($artists, $datos); //actualizo de acuerdo a los datos
+        $artistsTable = TableRegistry::getTableLocator()->get('Artists');  
+        $artists = $artistsTable->get($id); 
+        $artists = $artistsTable->patchEntity($artists, $datos); 
         if($artistsTable->save($artists)){
-            return true;//si lo guarda, regresa un true al controlador
+            return true;
         }
-        return false;//sino un false
+        return false;
         
     }
-    
-    //Creo que no se puede eliminar
+
     public function deleteArtists( $entity) 
     {
-        //$this->request->allowMethod(['post', 'delete']);
-        //dump($entity);
         $artistsTable = TableRegistry::getTableLocator()->get('Artists');  
         if ($artistsTable->delete($entity)) {
             return true;
