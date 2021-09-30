@@ -4,10 +4,15 @@ function actualiza(id){
         success:function(response){
             let template = '';
             $('.content-form').html(response);
+            
             if (id==null) {
                 $('.form').attr('action', '/artists/addEdit');
+                $('.form').attr('id', 'addform');
+                $('.boton-submit').attr('id', 'agregar');
             }else{
                 $('.form').attr('action', '/artists/addEdit/'+id);
+                //$('.form').attr('id', 'editform');
+                $('.boton-submit').attr('id', 'editar');
             }
             
             
@@ -37,14 +42,12 @@ $(function(){
     $(document).on('click', '.task-edit', function(){
         let element = $(this)[0].parentElement.parentElement; 
         let id = $(element).attr('artistID');
-        
-        //$('.form').attr('action', '/artists/addEdit/'+id);
         actualiza(id);
         $('#editmodal').modal('show');
-        $(".boton-submit").on("click", function(){
+        $(document).on("click","#editar", function(){
             //event.preventDefault();
-            console.log("jijijijijiji")
-            var postdata = $("#editform").serialize();
+            var postdata = $('.form').serialize();
+            console.log(postdata);
             $.ajax({
                 url:"/artists/addEdit/"+id,
                 data:postdata,
@@ -71,11 +74,12 @@ $(function(){
         
     $('#addmodal').modal('show');
         actualiza(null);
-            
-        $(".boton-submit").on("click", function(){
-            //event.preventDefault();
-            
-            var postdata = $("#addform").serialize();
+        
+        $(document).on("click",'#agregar', function(){
+            event.preventDefault();
+            //console.log("holi");
+            var postdata = $(".form").serialize();
+            console.log(postdata);
             $.ajax({        
                 url:"/artists/addEdit",
                 data:postdata,
@@ -89,7 +93,7 @@ $(function(){
                     
                     $('#addmodal').modal('hide');
                     listado();
-                    alert("espera");
+                    
                 },
                 error: function (response) {
                     console.log(response);
@@ -114,7 +118,7 @@ $(function(){
             confirmButtonText: 'Sí, eliminar!'
             }).then((result) => {
             if (result.isConfirmed) {
-                event.preventDefault();
+                //event.preventDefault();
                 
                 $.ajax({
                     url: "/artists/delete/"+id,

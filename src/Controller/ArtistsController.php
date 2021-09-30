@@ -49,6 +49,7 @@ class ArtistsController extends AppController{
             $artists = $this->Artists->newEntity();
             $this->set(compact('artists'));   
             $bandera = $this->Artists->add($this->request->getData());
+            dump($this->request->getData());
             if($bandera){//si es true
                 echo json_encode(array(
                     "status" => 1,
@@ -64,8 +65,9 @@ class ArtistsController extends AppController{
             exit;
         }else{
             $artists = $this->Artists->get($id);
-            $this->set(compact('artists'));
+            #$this->set(compact('artists'));
             $bandera = $this->Artists->edit($this->request->getData(), $id);
+            dump($this->request->getData());
             if($bandera){
                 
                 

@@ -27,23 +27,23 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
     
-    <?php echo $this->Html->css('Chart.min.css'); ?>
-    <?php echo $this->Html->css('icheck-bootstrap.min.css'); ?>
-    <?php echo $this->Html->css('jqvmap.min.css'); ?>
-    <?php echo $this->Html->css('OverlayScrollbars.min.css'); ?>
-    <?php echo $this->Html->css('daterangepicker.css'); ?>
-    <?php echo $this->Html->css('summernote-bs4.css'); ?>
-    <?php echo $this->Html->css('select2.min.css'); ?>
-    <?php echo $this->Html->css('select2-bootstrap4.min.css'); ?>
+    <?php echo $this->Html->css('Chart.min'); ?>
+    <?php echo $this->Html->css('icheck-bootstrap.min'); ?>
+    <?php echo $this->Html->css('jqvmap.min'); ?>
+    <?php echo $this->Html->css('OverlayScrollbars.min'); ?>
+    <?php echo $this->Html->css('daterangepicker'); ?>
+    <?php echo $this->Html->css('summernote-bs4'); ?>
+    <?php echo $this->Html->css('select2.min'); ?>
+    <?php echo $this->Html->css('select2-bootstrap4.min'); ?>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <?php echo $this->Html->css('adminlte.min.css'); ?>
-    <?php  echo $this->Html->css('PNotify'); ?>
+    <?php echo $this->Html->css('adminLTE.min'); ?>
+    <?php  echo $this->Html->css('pnotify'); ?>
     <?php  echo $this->Html->css('Material'); ?>
     <?php  echo $this->Html->css('BrightTheme'); ?>
     <?php  echo $this->Html->css('Angeler'); ?>
-    <?= $this->Html->script(['jquery-3.6.0.js']) ?>
+    <?= $this->Html->script(['jquery-3.6.0']) ?>
     
-    <?= $this->Html->script(['PNotify']) ?>
+    <?= $this->Html->script(['pnotify']) ?>
     
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->

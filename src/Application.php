@@ -34,7 +34,7 @@ class Application extends BaseApplication
      */
     public function bootstrap()
     {
-        $this->addPlugin('FontAwesome');
+        
 
         // Call parent to load bootstrap from files.
         parent::bootstrap();
@@ -53,7 +53,7 @@ class Application extends BaseApplication
 
         // Load more plugins here
 
-        $this->addPlugin('AdminLTE');
+        
         //$this->addPlugin('FontAwesome');
         
     }
