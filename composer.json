@@ -9,12 +9,8 @@
         "cakephp/cakephp": "3.8.*",
         "cakephp/migrations": "^2.0.0",
         "cakephp/plugin-installer": "^1.0",
-        "drmonkeyninja/cakephp-font-awesome": "*",
-        "mobiledetect/mobiledetectlib": "2.*",
-        "patrickquijano/cakephp3-fontawesome": "dev-master",
-        "sciactive/pnotify": "^4.0",
-        "simtecsystem/cakephp-adminlte-theme": "^1.1",
-        "yoeunes/notify": "^1.0"
+        "mobiledetect/mobiledetectlib": "2.*"
+        
     },
     "require-dev": {
         "cakephp/bake": "^1.9.0",
